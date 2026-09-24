@@ -1,19 +1,19 @@
 test:
-	flake8 redisext tests docs
-	nosetests --with-coverage --cover-package=redisext
+	ruff check redisext tests docs
+	python -m unittest discover -s tests -t .
 
 redis:
 	docker run --name redisext -p 6379:6379 -d redis
 
 publish: test
-	python setup.py sdist bdist_wheel upload
+	rm -rf dist
+	python -m build
+	twine check dist/*
 
 clean:
-	rm -rf build dist redisext.egg-info
+	rm -rf build dist redisext.egg-info .coverage .ruff_cache
 
 docs:
-	rm -rf docs/_build/*
-	python setup.py build_sphinx
-	python setup.py upload_sphinx
+	$(MAKE) -C docs html
 
 .PHONY: test redis publish clean docs
