@@ -1,9 +1,12 @@
 *.pyc
+*.egg-info/
 .vagrant
+.venv/
 .coverage
+.ruff_cache/
 
 etc/venv/
 
-build
-dist
+build/
+dist/
 docs/_build/

@@ -1,0 +1,107 @@
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
+
+[project]
+name = "redisext"
+dynamic = ["version"]
+description = "Data models for Redis"
+readme = "README.rst"
+license = {text = "MIT"}
+authors = [
+    {name = "Andrey Gubarev", email = "mylokin@me.com"},
+]
+maintainers = [
+    {name = "Krzysztof Klinikowski", email = "kkszysiu@gmail.com"},
+]
+keywords = ["redis", "orm", "models"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Database",
+    "Topic :: Database :: Database Engines/Servers",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "redis>=8.1.0,<9",
+]
+
+[project.urls]
+Homepage = "https://github.com/kkszysiu/redisext"
+Documentation = "https://pythonhosted.org/redisext/"
+Repository = "https://github.com/kkszysiu/redisext"
+Changelog = "https://github.com/kkszysiu/redisext/blob/master/CHANGELOG.rst"
+
+[project.optional-dependencies]
+dev = [
+    "build",
+    "coverage>=7.0",
+    "ruff>=0.8.0",
+    "twine",
+]
+docs = [
+    "sphinx>=7.0",
+    "sphinx-rtd-theme>=2.0",
+]
+test = [
+    "coverage>=7.0",
+]
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.uv-dynamic-versioning]
+vcs = "git"
+style = "pep440"
+bump = true
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/redisext",
+    "/CHANGELOG.rst",
+    "/LICENSE",
+    "/README.rst",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["redisext"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+exclude = [
+    ".git",
+    ".tox",
+    ".venv",
+    "build",
+    "dist",
+    "__pycache__",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "W",
+    "F",
+]
+ignore = [
+    "E203",
+    "E501",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["redisext"]
+
+[tool.coverage.run]
+branch = true
+source = ["redisext"]
