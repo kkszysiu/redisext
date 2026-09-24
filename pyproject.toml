@@ -3,7 +3,7 @@ requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [project]
-name = "redisext"
+name = "redisext-ng"
 dynamic = ["version"]
 description = "Data models for Redis"
 readme = "README.rst"
