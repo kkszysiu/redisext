@@ -33,7 +33,7 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "redis>=8.1.0,<9",
+    "redis>=6.4.0,<7",
 ]
 
 [project.urls]
@@ -63,6 +63,7 @@ source = "uv-dynamic-versioning"
 [tool.uv-dynamic-versioning]
 vcs = "git"
 style = "pep440"
+pattern = "default-unprefixed"
 bump = true
 
 [tool.hatch.build.targets.sdist]

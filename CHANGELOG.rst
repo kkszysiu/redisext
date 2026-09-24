@@ -3,6 +3,16 @@
 Changelog
 ---------
 
+3.0.0 (2026-09-24)
+++++++++++++++++++
+
+- Publish the maintained fork as ``redisext-ng`` while retaining the
+  ``redisext`` import package.
+- Require Python 3.10 or newer and Redis 6.4 or newer.
+- Replace setuptools packaging with Hatchling and dynamic Git-based versions.
+- Add automated, tag-triggered publishing to PyPI.
+- Use the standard-library ``unittest`` runner instead of nose.
+
 1.3.8 (2016-01-08)
 ++++++++++++++++++
 
